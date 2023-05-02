@@ -29,7 +29,7 @@ git clone https://github.com/IsmaelJDz/netflix-clone.git
 ### Install packages
 
 ```shell
-npm i
+npm i or yarn install
 ```
 
 ### Setup .env file
