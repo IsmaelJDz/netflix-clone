@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import useBillboard from '@/hooks/useBillboard';
 
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 const Billboard = () => {
-  const { data } = useBillboard();
+  const { data, isLoading } = useBillboard();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div

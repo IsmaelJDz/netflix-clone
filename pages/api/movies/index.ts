@@ -7,23 +7,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== 'GET') {
-    return res.status(405).end();
-  }
+  if (req.method !== 'GET') return res.status(405).end();
 
   try {
     await serverAuth(req, res);
 
-    const movieCount = await prisma.movie.count();
+    const movies = await prisma.movie.findMany();
 
-    const randomIndex = Math.floor(Math.random() * movieCount);
-
-    const randomMovie = await prisma.movie.findMany({
-      take: 1,
-      skip: randomIndex,
-    });
-
-    return res.status(200).json(randomMovie[0]);
+    return res.status(200).json(movies);
   } catch (error) {
     console.log(error);
     return res.status(400).end();
