@@ -21,8 +21,6 @@ export default async function handler(
       },
     });
 
-    console.log('favoritedMovies api ===========>', favoritedMovies);
-
     return res.status(200).json(favoritedMovies);
   } catch (error) {
     console.log(error);
